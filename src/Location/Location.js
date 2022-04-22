@@ -22,6 +22,7 @@ const useGeoLocation = () => {
       error,
     });
   };
+
   useEffect(() => {
     if (!("geolocation" in navigator)) {
       onError({

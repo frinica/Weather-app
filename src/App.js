@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import useGeoLocation from "./Location/Location";
 import CurrentDay from "./CurrentDay/CurrentDay";
+import DetailedData from "./DetailedData/DetailedData";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <div className="App">
       {weatherData && <CurrentDay weatherData={weatherData} />}
+      {weatherData && <DetailedData weatherData={weatherData} />}
     </div>
   );
 };

@@ -3,6 +3,13 @@
   padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.598);
   border-radius: 1rem;
+}
+
+.heading {
+  text-align: center;
+}
+
+.summary {
   display: flex;
   justify-content: space-between;
 }

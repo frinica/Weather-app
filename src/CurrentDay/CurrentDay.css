@@ -3,6 +3,7 @@
   padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.598);
   border-radius: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .heading {
@@ -17,9 +18,12 @@
 .icon {
   padding-right: 1rem;
   display: flex;
-  align-self: center;
+  justify-content: flex-end;
+  width: 35%;
+  height: auto;
 }
 
-.bi-sun {
-  font-size: 5rem;
+img {
+  width: 35%;
+  height: auto;
 }

@@ -17,10 +17,16 @@ const CurrentDay = ({ weatherData, unit }) => {
             Feels like: {weatherData[0].main.feels_like}{" "}
             {unit === "metric" ? "°C" : "°F"}
           </p>
-          <p>{weatherData[0].weather[0].main}</p>
+          <p>
+            {weatherData[0].weather[0].description[0].toUpperCase() +
+              weatherData[0].weather[0].description.slice(1)}
+          </p>
         </div>
         <div className="icon">
-          <i className="bi bi-sun"></i>
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherData[0].weather[0].icon}.png`}
+            alt={weatherData[0].weather[0].main}
+          />
         </div>
       </div>
     </div>

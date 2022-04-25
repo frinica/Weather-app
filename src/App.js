@@ -37,10 +37,10 @@ const App = () => {
   return (
     <div className="App">
       <button onClick={changeUnit} value="metric">
-        Celcius
+        °C
       </button>
       <button onClick={changeUnit} value="imperial">
-        Fahrenheit
+        °F
       </button>
 
       <CurrentDay weatherData={weatherData} unit={unit} />

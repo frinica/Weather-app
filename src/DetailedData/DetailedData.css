@@ -12,6 +12,7 @@
 }
 
 .details {
+  padding-bottom: 1rem;
   display: flex;
   justify-content: space-between;
 }
@@ -19,4 +20,15 @@
 .detail-icon {
   font-size: 1.5rem;
   padding-right: 0.5rem;
+}
+
+.humidity {
+  display: flex;
+  align-self: flex-start;
+  justify-items: center;
+}
+
+.humidity-text {
+  display: flex;
+  align-self: flex-end;
 }

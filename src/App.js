@@ -12,11 +12,12 @@ const App = () => {
   const location = useGeoLocation();
   const lat = location.coordinates.lat;
   const lng = location.coordinates.lng;
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
+  const [unit, setUnit] = useState("metric");
 
   const getWeatherData = async () => {
     try {
-      const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}`;
+      const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=${unit}`;
       const res = await axios.get(API_URL);
       setWeatherData([res.data]);
     } catch (e) {
@@ -26,12 +27,24 @@ const App = () => {
 
   useEffect(() => {
     getWeatherData();
-  }, [lat, lng]);
+  }, [lat, lng, unit]);
+
+  const changeUnit = (e) => {
+    e.preventDefault();
+    setUnit(e.target.value);
+  };
 
   return (
     <div className="App">
-      {weatherData && <CurrentDay weatherData={weatherData} />}
-      {weatherData && <DetailedData weatherData={weatherData} />}
+      <button onClick={changeUnit} value="metric">
+        Celcius
+      </button>
+      <button onClick={changeUnit} value="imperial">
+        Fahrenheit
+      </button>
+
+      <CurrentDay weatherData={weatherData} unit={unit} />
+      <DetailedData weatherData={weatherData} unit={unit} />
     </div>
   );
 };

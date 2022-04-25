@@ -3,6 +3,20 @@
   padding: 0 1rem;
   background-color: rgba(0, 0, 0, 0.598);
   border-radius: 1rem;
+}
+
+.dataHeading {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.details {
   display: flex;
   justify-content: space-between;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  padding-right: 0.5rem;
 }

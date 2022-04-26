@@ -19,11 +19,10 @@
   padding-right: 1rem;
   display: flex;
   justify-content: flex-end;
-  width: 35%;
-  height: auto;
+  width: 50%;
+  height: 50%;
 }
 
 img {
-  width: 35%;
-  height: auto;
+  width: 50%;
 }

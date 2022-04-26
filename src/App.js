@@ -2,10 +2,11 @@ import axios from "axios";
 import "./App.css";
 import { useState, useEffect } from "react";
 
-import ApiData from "./API/api";
+import ApiData, { fetchHourlyData } from "./API/api";
 import useGeoLocation from "./Location/Location";
 import CurrentDay from "./CurrentDay/CurrentDay";
 import DetailedData from "./DetailedData/DetailedData";
+import HourlyData from "./HourlyData/HourlyData";
 import { fetchWeatherData } from "./API/api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -14,7 +15,9 @@ const App = () => {
   const location = useGeoLocation();
   const lat = location.coordinates.lat;
   const lng = location.coordinates.lng;
+  /* const [loading, setLoading] = useState(false); */
   const [weatherData, setWeatherData] = useState([{}]);
+  const [hourlyData, setHourlyData] = useState({});
   const [unit, setUnit] = useState("metric");
 
   /* const getWeatherData = async () => {
@@ -27,6 +30,15 @@ const App = () => {
     }
   }; */
 
+  const getHourlyData = async () => {
+    try {
+      const res = await fetchHourlyData({ lat, lng, unit });
+      setHourlyData(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const getWeatherData = async () => {
     try {
       const res = await fetchWeatherData({ lat, lng, unit });
@@ -37,29 +49,34 @@ const App = () => {
   };
 
   useEffect(() => {
-    getWeatherData({ lat, lng, unit });
+    if (lat && lng) {
+      getWeatherData({ lat, lng, unit });
+      getHourlyData({ lat, lng, unit });
+    }
   }, [lat, lng, unit]);
 
-  console.log(weatherData);
+  console.log(hourlyData);
 
   const changeUnit = (e) => {
     e.preventDefault();
     setUnit(e.target.value);
   };
 
-  return (
-    <div className="App">
-      <button onClick={changeUnit} value="metric">
-        °C
-      </button>
-      <button onClick={changeUnit} value="imperial">
-        °F
-      </button>
-
-      <CurrentDay weatherData={weatherData} unit={unit} />
-      <DetailedData weatherData={weatherData} unit={unit} />
-    </div>
-  );
+  if (weatherData && hourlyData && unit) {
+    return (
+      <div className="App">
+        <button onClick={changeUnit} value="metric">
+          °C
+        </button>
+        <button onClick={changeUnit} value="imperial">
+          °F
+        </button>
+        <CurrentDay weatherData={weatherData} unit={unit} />
+        <DetailedData weatherData={weatherData} unit={unit} />
+        <HourlyData hourlyData={hourlyData} unit={unit} />
+      </div>
+    );
+  }
 };
 
 export default App;

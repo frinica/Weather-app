@@ -10,8 +10,6 @@ import HourlyData from "./HourlyData/HourlyData";
 import DailyForecast from "./DailyForecast/DailyForecast";
 import { fetchWeatherData } from "./API/api";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 const App = () => {
   const location = useGeoLocation();
   const lat = location.coordinates.lat;
@@ -55,8 +53,6 @@ const App = () => {
       getDaysData({ lat, lng, unit });
     }
   }, [lat, lng, unit]);
-
-  console.log(daysData);
 
   const changeUnit = (e) => {
     e.preventDefault();

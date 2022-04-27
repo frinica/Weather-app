@@ -4,7 +4,7 @@ import "../bootstrap-icons.css";
 
 const CurrentDay = ({ weatherData, unit }) => {
   return (
-    <div className="currentDay">
+    <div className="container">
       <div className="heading">
         <h1>{weatherData[0].name}</h1>
       </div>
@@ -18,7 +18,7 @@ const CurrentDay = ({ weatherData, unit }) => {
             Feels like: {weatherData[0].main.feels_like}{" "}
             {unit === "metric" ? "°C" : "°F"}
           </p>
-          <p>
+          <p className="currentWeather">
             {weatherData[0].weather[0].description[0].toUpperCase() +
               weatherData[0].weather[0].description.slice(1)}
           </p>

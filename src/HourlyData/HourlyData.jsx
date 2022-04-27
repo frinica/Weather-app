@@ -4,7 +4,7 @@ import "./HourlyData.css";
 const HourlyData = ({ hourlyData, unit }) => {
   const hours = hourlyData.list.slice(0, 8);
   return (
-    <div className="hourlyData">
+    <div className="container">
       <div className="dataHeading">
         <h2>24 hour forecast</h2>
       </div>
@@ -14,9 +14,8 @@ const HourlyData = ({ hourlyData, unit }) => {
             <div className="dataContainer">
               <div className="timeStamp">
                 {new Date(data.dt * 1000).toLocaleTimeString("se-SE", {
-                  hour: "2-digit",
+                  timeStyle: "short",
                 })}
-                :00
               </div>
               <div className="temperature">
                 {Math.round(data.main.temp)} {unit === "metric" ? "°C" : "°F"}

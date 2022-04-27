@@ -4,7 +4,7 @@ import "../bootstrap-icons.css";
 
 const DailyForecast = ({ daysData, unit }) => {
   return (
-    <div className="dailyForecast">
+    <div className="container">
       <div className="dataHeading">
         <h2>Daily forecast</h2>
       </div>
@@ -22,7 +22,7 @@ const DailyForecast = ({ daysData, unit }) => {
                 <div className="temperatureMax">
                   {Math.round(day.temp.max)}°
                 </div>
-                <div className="temperatureMax">
+                <div className="temperatureMin">
                   {Math.round(day.temp.min)}°
                 </div>
                 <div className="weatherIcon">

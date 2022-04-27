@@ -25,3 +25,11 @@ export const fetchDaysData = async ({ lat, lng, unit }) => {
   );
   return res;
 };
+
+// Searched location
+export const fetchSearchData = async ({ searchTerm }) => {
+  const res = axios.get(
+    `https://api.openweathermap.org/data/2.5/weather?q=${searchTerm}&&appid=${API_KEY}`
+  );
+  return res;
+};

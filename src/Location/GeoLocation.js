@@ -30,7 +30,6 @@ const useGeoLocation = () => {
         message: "Geolocation is not supported",
       });
     }
-
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }, []);
 

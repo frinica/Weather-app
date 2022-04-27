@@ -1,14 +1,36 @@
 .App {
   text-align: center;
   margin: 0.3rem;
+  padding: 0.5rem;
 }
 
-.container {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.598);
-  border-radius: 1rem;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.day {
+  background-image: url("../public/img/bg-day.jpg");
+}
+
+.night {
+  background-image: url("../public/img/bg-night.jpg");
+}
+
+.search {
+  margin: 1rem auto;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1.75rem;
+}
+
+.search input {
+  flex: 1;
+  border: 2px solid #b9513545;
+  border-radius: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1rem;
+
+  outline: none;
+  color: #ffffffd0;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 button {
@@ -17,14 +39,25 @@ button {
   margin: 1rem;
   width: 5rem;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
+  border: 2px solid #b9513545;
   border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.598);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 
 button:hover {
-  background-color: rgba(0, 0, 0, 0.872);
+  background-color: #000000ed;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.container {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dataHeading {
@@ -37,6 +70,11 @@ button:hover {
   .App {
     margin: 1.3rem;
     font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+    width: 6rem;
   }
 
   .container {

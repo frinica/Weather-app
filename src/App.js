@@ -1,9 +1,8 @@
-import axios from "axios";
 import "./App.css";
 import { useState, useEffect } from "react";
 
-import ApiData, { fetchDaysData, fetchHourlyData } from "./API/api";
-import useGeoLocation from "./Location/Location";
+import { fetchDaysData, fetchHourlyData, fetchSearchData } from "./API/api";
+import useGeoLocation from "./Location/GeoLocation";
 import CurrentDay from "./CurrentDay/CurrentDay";
 import DetailedData from "./DetailedData/DetailedData";
 import HourlyData from "./HourlyData/HourlyData";
@@ -12,17 +11,20 @@ import { fetchWeatherData } from "./API/api";
 
 const App = () => {
   const location = useGeoLocation();
-  const lat = location.coordinates.lat;
-  const lng = location.coordinates.lng;
+  let lat = location.coordinates.lat;
+  let lng = location.coordinates.lng;
+
   const [weatherData, setWeatherData] = useState();
   const [hourlyData, setHourlyData] = useState();
   const [daysData, setDaysData] = useState();
   const [unit, setUnit] = useState("metric");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const getHourlyData = async () => {
+  const getSearchData = async () => {
     try {
-      const res = await fetchHourlyData({ lat, lng, unit });
-      setHourlyData(res.data);
+      const res = await fetchSearchData({ searchTerm });
+      lat = res.data.coord.lat;
+      lng = res.data.coord.lon;
     } catch (e) {
       console.log(e);
     }
@@ -32,6 +34,15 @@ const App = () => {
     try {
       const res = await fetchWeatherData({ lat, lng, unit });
       setWeatherData([res.data]);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getHourlyData = async () => {
+    try {
+      const res = await fetchHourlyData({ lat, lng, unit });
+      setHourlyData(res.data);
     } catch (e) {
       console.log(e);
     }
@@ -59,15 +70,39 @@ const App = () => {
     setUnit(e.target.value);
   };
 
-  if (weatherData && hourlyData && unit) {
+  const changeLocation = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  if (searchTerm) {
+    getSearchData();
+  }
+
+  if (weatherData && hourlyData && daysData) {
+    let now = new Date();
+    let sunset = new Date(weatherData[0].sys.sunset);
+
     return (
-      <div className="App">
-        <button onClick={changeUnit} value="metric">
-          °C
-        </button>
-        <button onClick={changeUnit} value="imperial">
-          °F
-        </button>
+      <div className={now > sunset ? "App night" : "App day"}>
+        <div className="search">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search location"
+              onChange={changeLocation}
+            />
+          </form>
+          <button onClick={changeUnit} value="metric">
+            °C
+          </button>
+          <button onClick={changeUnit} value="imperial">
+            °F
+          </button>
+        </div>
         {weatherData && <CurrentDay weatherData={weatherData} unit={unit} />}
         {weatherData && <DetailedData weatherData={weatherData} unit={unit} />}
         {hourlyData && <HourlyData hourlyData={hourlyData} unit={unit} />}

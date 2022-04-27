@@ -11,7 +11,8 @@ const CurrentDay = ({ weatherData, unit }) => {
       <div className="summary">
         <div>
           <h2>
-            {weatherData[0].main.temp} {unit === "metric" ? "°C" : "°F"}
+            {Math.round(weatherData[0].main.temp)}{" "}
+            {unit === "metric" ? "°C" : "°F"}
           </h2>
           <p>
             Feels like: {weatherData[0].main.feels_like}{" "}

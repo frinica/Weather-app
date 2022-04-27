@@ -1,4 +1,4 @@
-.hourlyData {
+.dailyForecast {
   margin: 0.5rem;
   padding: 0 1rem;
   background-color: rgba(0, 0, 0, 0.598);
@@ -6,18 +6,13 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dataHeading {
-  font-size: 0.8rem;
-  display: flex;
-  align-items: flex-start;
-}
-
 .wrapper {
   display: flex;
   overflow-y: hidden;
 }
 
-.dataContainer {
-  margin: 1rem;
-  padding: 0.5rem;
+.daysContainer {
+  margin: 1.5rem;
+  padding-bottom: 0.5rem;
+  min-width: 20%;
 }

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-/* const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=${unit}`; */
 
+// Current day forecast and details data
 export const fetchWeatherData = async ({ lat, lng, unit }) => {
   const res = axios.get(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=${unit}`
@@ -10,9 +10,18 @@ export const fetchWeatherData = async ({ lat, lng, unit }) => {
   return res;
 };
 
+// 24 hour forecast data
 export const fetchHourlyData = async ({ lat, lng, unit }) => {
   const res = axios.get(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=${unit}`
+  );
+  return res;
+};
+
+// 5 days forecast data
+export const fetchDaysData = async ({ lat, lng, unit }) => {
+  const res = axios.get(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&exclude={part}&appid=${API_KEY}&units=${unit}`
   );
   return res;
 };

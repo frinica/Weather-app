@@ -10,25 +10,15 @@ import DailyForecast from "./DailyForecast/DailyForecast";
 import { fetchWeatherData } from "./API/api";
 
 const App = () => {
-  const location = useGeoLocation();
-  let lat = location.coordinates.lat;
-  let lng = location.coordinates.lng;
-
   const [weatherData, setWeatherData] = useState();
   const [hourlyData, setHourlyData] = useState();
   const [daysData, setDaysData] = useState();
   const [unit, setUnit] = useState("metric");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const getSearchData = async () => {
-    try {
-      const res = await fetchSearchData({ searchTerm });
-      lat = res.data.coord.lat;
-      lng = res.data.coord.lon;
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const location = useGeoLocation(searchTerm);
+  let lat = location.coordinates.lat;
+  let lng = location.coordinates.lng;
 
   const getWeatherData = async () => {
     try {
@@ -78,9 +68,7 @@ const App = () => {
     e.preventDefault();
   };
 
-  if (searchTerm) {
-    getSearchData();
-  }
+  console.log(lat, lng);
 
   if (weatherData && hourlyData && daysData) {
     let now = new Date();
@@ -91,7 +79,7 @@ const App = () => {
         <div className="search">
           <form onSubmit={handleSubmit}>
             <input
-              type="text"
+              type="search"
               placeholder="Search location"
               onChange={changeLocation}
             />

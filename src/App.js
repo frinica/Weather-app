@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
-import { fetchDaysData, fetchHourlyData, fetchSearchData } from "./API/api";
+import { fetchDaysData, fetchHourlyData } from "./API/api";
 import useGeoLocation from "./Location/GeoLocation";
 import CurrentDay from "./CurrentDay/CurrentDay";
 import DetailedData from "./DetailedData/DetailedData";

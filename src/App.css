@@ -6,14 +6,16 @@
 
 .day {
   background-image: url("../public/img/bg-day.jpg");
+  background-size: cover;
 }
 
 .night {
   background-image: url("../public/img/bg-night.jpg");
+  background-size: cover;
 }
 
-.search {
-  margin: 1rem auto;
+form {
+  margin: auto;
   width: 70%;
   display: flex;
   justify-content: center;
@@ -36,7 +38,8 @@
 button {
   display: inline-block;
   padding: 0.8rem;
-  margin: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   width: 5rem;
   font-size: 1rem;
   font-weight: 600;

@@ -14,7 +14,7 @@ const DailyForecast = ({ daysData, unit }) => {
             return (
               <div className="daysContainer">
                 <div className="timeStamp">
-                  {new Date(day.dt * 1000).toLocaleDateString("se-SE", {
+                  {new Date(day.dt * 1000).toLocaleDateString("en-EN", {
                     day: "numeric",
                     month: "short",
                   })}

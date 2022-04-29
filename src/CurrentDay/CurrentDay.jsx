@@ -1,6 +1,5 @@
 import React from "react";
 import "./CurrentDay.css";
-import "../bootstrap-icons.css";
 
 const CurrentDay = ({ weatherData, unit }) => {
   return (
@@ -15,7 +14,7 @@ const CurrentDay = ({ weatherData, unit }) => {
             {unit === "metric" ? "°C" : "°F"}
           </h2>
           <p>
-            Feels like: {weatherData[0].main.feels_like}{" "}
+            Feels like: {Math.round(weatherData[0].main.feels_like)}{" "}
             {unit === "metric" ? "°C" : "°F"}
           </p>
           <p className="currentWeather">

@@ -1,49 +1,23 @@
-/*  */
-
-.details {
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
+table {
+  text-align: start;
 }
 
-.weatherContainer {
-  padding: 0.5rem;
+td {
+  padding-bottom: 1.2rem;
+  padding-right: 3rem;
 }
 
 i {
-  font-size: 1.5rem;
-  padding-right: 0.5rem;
-}
-
-.humidity {
-  display: flex;
-  align-self: flex-start;
-  justify-items: center;
-}
-
-.humidity-text {
-  display: flex;
-  align-self: flex-end;
-  padding-bottom: 0.2rem;
+  margin-right: 1rem;
+  font-size: 1.3rem;
 }
 
 @media only screen and (min-width: 768px) {
-  .dataHeading {
-    font-size: 1.5rem;
-  }
-  .details {
-    justify-content: space-around;
-  }
-  .weatherContainer {
-    padding: 1rem;
-  }
-  i {
-    font-size: 3rem;
-    margin: 0.5rem;
+  td {
+    padding-right: 6rem;
   }
 
-  .humidity-text {
-    align-self: center;
-    padding: 0;
+  i {
+    font-size: 2rem;
   }
 }

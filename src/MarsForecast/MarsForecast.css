@@ -1,0 +1,22 @@
+.marsContainer {
+  background-image: url("/public/img/mars.png");
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: 90% 50%;
+}
+
+.smallHeading {
+  display: flex;
+  justify-content: flex-start;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 768px) {
+  .marsContainer {
+    background-position: 80% 50%;
+  }
+}

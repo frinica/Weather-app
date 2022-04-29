@@ -33,3 +33,8 @@ export const fetchSearchData = async ({ searchTerm }) => {
   );
   return res;
 };
+
+export const fetchMarsData = async () => {
+  const res = axios.get("https://api.maas2.apollorion.com");
+  return res;
+};
